@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Relógio Cyberpunk</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .clock {
+      font-size: 6rem;
+      padding: 40px 80px;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 30px #00ffff88, 0 0 60px #ff00ff33;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 30px #00ffff88, 0 0 60px #ff00ff33;
+      }
+      50% {
+        box-shadow: 0 0 40px #ff00ffaa, 0 0 80px #00ffff55;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="relogio">00:00:00</div>
+
+  <!-- Música Synthwave ambiente -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/71oc0l.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    function atualizarRelogio() {
+      const agora = new Date();
+      const horas = String(agora.getHours()).padStart(2, '0');
+      const minutos = String(agora.getMinutes()).padStart(2, '0');
+      const segundos = String(agora.getSeconds()).padStart(2, '0');
+      const relogio = document.getElementById("relogio");
+      relogio.textContent = `${horas}:${minutos}:${segundos}`;
+    }
+
+    setInterval(atualizarRelogio, 1000);
+    atualizarRelogio();
+  </script>
+</body>
+</html>
